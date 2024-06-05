@@ -1,0 +1,14 @@
+$c1: #3574F0;
+$c2: #FD3593;
+
+// 样式初始化
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// NProgress 自定义颜色
+#nprogress .bar {
+  background: #409EFF !important; //自定义颜色
+}

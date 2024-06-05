@@ -1,0 +1,35 @@
+{
+  "name": "vue3-vant-template",
+  "author": {
+    "name": "青明尘下",
+    "email": "qmcx.ming@qq.com"
+  },
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.1.7",
+    "vant": "^4.9.0",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@vant/auto-import-resolver": "^1.2.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.77.4",
+    "sass-loader": "^14.2.1",
+    "unplugin-auto-import": "^0.17.6",
+    "unplugin-vue-components": "^0.27.0",
+    "unplugin-vue-setup-extend-plus": "^1.0.1",
+    "vite": "^5.2.8",
+    "vite-plugin-fake-server": "^2.1.1",
+    "vite-plugin-svg-icons": "^2.0.1"
+  }
+}
