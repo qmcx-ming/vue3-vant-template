@@ -21,5 +21,11 @@ export default {
    * 是否开启页面标题拼接
    * @type {boolean} true | false
    */
-  isPageTitleJoining: false
+  isPageTitleJoining: false,
+  /**
+   * 是否开启WebHashHistory模式
+   * @type {boolean} true | false
+   * @description 因为github pages使用history模式的话，会有404的错误，所以使用hash模式
+   */
+  isHashHistory: true
 }
