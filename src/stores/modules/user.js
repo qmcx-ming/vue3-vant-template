@@ -12,7 +12,11 @@ const useUserStore = defineStore('user', {
     remark: ''
   }),
   actions: {
-    // 登录
+    /**
+     * 登录
+     * @param {*} userInfo 用户信息
+     * @returns Promise
+     */
     login(userInfo) {
       const username = userInfo.username.trim();
       const password = userInfo.password;
@@ -28,7 +32,10 @@ const useUserStore = defineStore('user', {
         });
       });
     },
-    // 获取用户信息
+    /**
+     * 获取用户信息
+     * @returns Promise
+     */
     getInfo() {
       return new Promise((resolve, reject) => {
         getInfo().then(res => {
@@ -45,7 +52,10 @@ const useUserStore = defineStore('user', {
         });
       })
     },
-    // 退出登录
+    /**
+     * 退出登录
+     * @returns Promise
+     */
     logout() {
       return new Promise((resolve, reject) => {
         logout().then(() => {
@@ -57,7 +67,11 @@ const useUserStore = defineStore('user', {
         });
       })
     },
-    // 修改用户资料
+    /**
+     * 修改用户资料
+     * @param {*} userInfo 用户信息
+     * @returns Promise
+     */
     updateProfile(userInfo) {
       return new Promise((resolve, reject) => {
         updateUserProfile(userInfo).then(res => {

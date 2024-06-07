@@ -16,6 +16,15 @@ const routes = [
       title: '登录'
     }
   },
+  // 404
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('@/views/error/404.vue'),
+    meta: {
+      title: '页面没有找到🐳'
+    }
+  },
   {
     path: '/',
     name: 'root',

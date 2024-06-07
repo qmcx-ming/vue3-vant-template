@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router';
 import Avatar from '@/assets/images/avatar.jpg';
 import useUserStore from '@/stores/modules/user';
 import { updateUserPwd } from '@/api/login';
-// import { validatorConfirmPassword } from '@/utils/rules';
 
 const userStore = useUserStore();
 
@@ -23,7 +22,10 @@ const router = useRouter();
 
 // 预览图片
 const previewImage = () => {
-  showImagePreview([Avatar]);
+  showImagePreview({
+    images: [userStore.avatar || Avatar],
+    closeable: true,
+  });
 };
 
 // 对话框关闭
@@ -90,12 +92,13 @@ const logoutHandler = () => {
           class="avatar"
           width="80"
           height="80"
-          :src="userStore.avatar"
+          :src="userStore.avatar || Avatar"
           fit="cover"
           round
           @click="previewImage"
         />
-        <span class="username">{{ userStore.name }}</span>
+        <span class="username" v-if="userStore.token">{{ userStore.name }}</span>
+        <router-link v-else class="username" to="/login">立即登录</router-link>
       </div>
     </div>
     <!-- 个性签名 -->
@@ -120,7 +123,7 @@ const logoutHandler = () => {
         <van-cell title="关于我们" icon="like-o" is-link />
       </van-cell-group>
 
-      <div style="padding: 16px">
+      <div style="padding: 16px" v-if="userStore.token">
         <van-button type="default" block @click="logoutHandler"
           >退出登录</van-button
         >
