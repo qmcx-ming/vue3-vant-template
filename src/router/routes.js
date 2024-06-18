@@ -1,4 +1,5 @@
 import Layout from '@/layout/index.vue';
+import pages from '@/pages';
 
 /**
  * 路由配置
@@ -9,64 +10,16 @@ import Layout from '@/layout/index.vue';
  */
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/login/index.vue'),
-    meta: {
-      title: '登录'
-    }
-  },
-  // 404
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: () => import('@/views/error/404.vue'),
-    meta: {
-      title: '页面没有找到🐳'
-    }
-  },
-  {
     path: '/',
     name: 'root',
     component: Layout,
     redirect: '/home',
+    // 相当于让children中每一个对象的meta属性有了默认值
     meta: {
-      keepAlive: true
+      keepAlive: false,
+      showNav: false
     },
-    children: [
-      {
-        path: '/home',
-        name: 'Home',
-        component: () => import('@/views/home/index.vue'),
-        meta: {
-          title: '主页',
-          keepAlive: true,
-          showNav: true,
-          icon: 'wap-home-o'
-        }
-      },
-      {
-        path: '/mine',
-        name: 'Mine',
-        component: () => import('@/views/mine/index.vue'),
-        meta: {
-          title: '我的',
-          keepAlive: true,
-          showNav: false,
-          icon: 'user-o'
-        }
-      },
-      {
-        path: '/profile',
-        name: 'Profile',
-        component: () => import('@/views/mine/profile/index.vue'),
-        meta: {
-          title: '个人资料',
-          keepAlive: false,
-          showNav: true
-        }
-      }
-    ]
+    children: pages
   }
 ]
 
