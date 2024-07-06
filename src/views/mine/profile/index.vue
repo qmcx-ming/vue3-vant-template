@@ -5,6 +5,11 @@ import { getUserProfile } from '@/api/login';
 
 const userStore = useUserStore();
 
+// 46px:导航栏高度
+const NAVBAR_HEIGHT = 46;
+// 44px:tab标签栏高度
+const TABBAR_HEIGHT = 44;
+
 const active = ref(0);
 
 const info = ref({
@@ -58,6 +63,11 @@ const getSexIcon = computed(() => {
   };
 });
 
+// 获取个人资料页面高度
+const profileHeight = computed(() => {
+  // 窗口高度减去导航栏和标签栏的高度
+  return `${window.innerHeight - NAVBAR_HEIGHT - TABBAR_HEIGHT}px`;
+});
 getProfile();
 </script>
 <template>
@@ -81,7 +91,7 @@ getProfile();
           <van-cell icon="description" title="创建日期" value="2024-01-01" />
         </van-cell-group>
       </van-tab>
-      <van-tab title="编辑信息">
+      <van-tab title="编辑信息" class="profile-tab">
         <van-form @submit="onSubmit">
           <van-cell-group inset>
             <van-field
@@ -160,8 +170,7 @@ getProfile();
 <style lang="scss" scoped>
 .profile {
   .profile-tab {
-    // 46px 导航栏高度 44px tab标签栏高度
-    height: calc(100vh - 46px - 44px);
+    height: v-bind(profileHeight);
   }
 }
 </style>

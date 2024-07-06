@@ -196,8 +196,7 @@ const logoutHandler = () => {
 <style lang="scss" scoped>
 .mine {
   background-color: #f5f6f7;
-  // 50px 为tabbar的高度
-  height: calc(100vh - 50px);
+  height: 100%;
   .top {
     display: flex;
     height: 180px;

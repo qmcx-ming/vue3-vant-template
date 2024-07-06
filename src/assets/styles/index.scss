@@ -8,6 +8,12 @@ body {
   box-sizing: border-box;
 }
 
+html,
+body,
+#app {
+  height: 100%;
+}
+
 // NProgress 自定义颜色
 #nprogress .bar {
   background: #409EFF !important; //自定义颜色
