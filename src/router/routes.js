@@ -20,6 +20,18 @@ const routes = [
       showNav: false
     },
     children: pages
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect:'/404',
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: () => import('@/views/error/404.vue'),
+    meta: {
+      title: '页面没有找到🐳'
+    }
   }
 ]
 
