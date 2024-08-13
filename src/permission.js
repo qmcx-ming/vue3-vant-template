@@ -4,6 +4,7 @@ import useCachedViewStore from '@/stores/modules/cachedView';
 import useUserStore from '@/stores/modules/user';
 import settings from './settings';
 import { getToken } from '@/utils/auth';
+import { isRelogin } from '@/utils/request'
 
 // 进度条
 import NProgress from 'nprogress';
@@ -39,12 +40,14 @@ router.beforeEach(async (to, from, next) => {
         next();
       } else {
         try {
+          isRelogin.show = true;
           await useUserStore().getInfo();
+          isRelogin.show = false;
           next();
         } catch(error) {
-          await useUserStore().logout();
-          showFailToast(error);
-          next('/login');
+          useUserStore().resetToken();
+          // showFailToast(error);
+          next();
           NProgress.done();
         }
       }

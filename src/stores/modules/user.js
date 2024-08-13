@@ -59,8 +59,7 @@ const useUserStore = defineStore('user', {
     logout() {
       return new Promise((resolve, reject) => {
         logout().then(() => {
-          removeToken();
-          this.token = '';
+          this.resetToken();
           resolve();
         }).catch(error => {
           reject(error);
@@ -81,6 +80,13 @@ const useUserStore = defineStore('user', {
           reject(error);
         })
       });
+    },
+    /**
+     * 重置token
+     */
+    resetToken() {
+      removeToken();
+      this.token = '';
     }
   }
 });

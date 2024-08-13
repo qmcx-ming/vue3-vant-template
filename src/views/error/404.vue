@@ -25,7 +25,7 @@ import NotFound from '@/assets/images/404.svg';
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  padding-top: 40px;
 
   .not-found-text {
     width: 100%;

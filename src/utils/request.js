@@ -2,7 +2,10 @@ import axios from 'axios';
 import useUserStore from '@/stores/modules/user';
 import settings from '@/settings';
 import { getToken } from './auth';
-import { useRouter } from 'vue-router';
+import router from '@/router';
+
+// 是否显示重新登录
+export let isRelogin = { show: false };
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
 // 创建axios实例
@@ -34,17 +37,29 @@ service.interceptors.response.use(response => {
   }
 
   if (res.code === 401) {
-    showDialog({
-      title: '系统提示',
-      message: '登录状态已过期，您可以继续留在该页面，或者重新登录',
-      confirmButtonText: '重新登录',
-      cancelButtonText: '取消'
-    }).then(() => {
-      // 调用登出接口，清除缓存
-      useUserStore().logout().then(() => {
-        useRouter().replace({ path: '/login' });
+    if (!isRelogin.show) {
+      console.log('登录过期');
+      isRelogin.show = true;
+      showDialog({
+        title: '系统提示',
+        message: '登录状态已过期，您可以继续留在该页面，或者重新登录',
+        confirmButtonText: '重新登录',
+        showCancelButton: true,
+        cancelButtonText: '取消'
+      }).then(() => {
+        isRelogin.show = false; // 避免重复弹窗
+        // 直接调用登出，可能会导致服务器升级或者服务器缓存清理时，前端无法正常登出
+        router.replace({ path: '/login' });
+      }).catch(() => {
+        // 若页面非白名单页面，则跳转到登录页面
+        if (settings.whiteList.indexOf(router.currentRoute.value.path) === -1) {
+          router.replace({ path: '/login' });
+        }
+        isRelogin.show = false;
       });
-    })
+      // 清除缓存
+      useUserStore().resetToken();
+    }
 
     return Promise.reject('无效的会话，或者会话已过期，请重新登录。');
   }

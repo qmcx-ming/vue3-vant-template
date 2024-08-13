@@ -104,6 +104,7 @@ const logoutHandler = () => {
     <!-- 个性签名 -->
     <div class="personalized-signature">
       <van-text-ellipsis
+        v-if="userStore.token"
         :content="userStore.remark"
         expand-text="展开"
         collapse-text="收起"
