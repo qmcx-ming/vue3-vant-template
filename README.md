@@ -9,15 +9,18 @@
 ## 使用
 
 ```sh
-# 安装依赖
+# 一、本地调试
+# 1.安装依赖
 npm install
 
-# 运行
+# 2.运行
 npm run dev
 
+# 二、打包上线
 # 打包
 npm run build
 
+# 三、本地预览打包效果
 # 预览
 npm run preview
 ```

@@ -38,7 +38,6 @@ service.interceptors.response.use(response => {
 
   if (res.code === 401) {
     if (!isRelogin.show) {
-      console.log('登录过期');
       isRelogin.show = true;
       showDialog({
         title: '系统提示',
