@@ -1,11 +1,30 @@
 $c1: #3574F0;
 $c2: #FD3593;
 
+:root {
+  --icon-color: #000000;
+  --bg-color: #ffffff;
+}
+
 // 样式初始化
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.van-theme-dark {
+  --icon-color: #ffffff;
+  --bg-color: #1C1C1E;
+}
+
+.van-theme-dark body {
+  color: #f5f5f5;
+  background-color: var(--bg-color);
+}
+
+.van-theme-dark body .mine {
+  background-color: var(--bg-color);
 }
 
 html,

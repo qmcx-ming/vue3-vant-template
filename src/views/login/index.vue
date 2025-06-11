@@ -38,6 +38,7 @@ const onSubmit = async (values) => {
   loading.value = true;
   try {
     await useUserStore().login(form.value);
+    showToast('登录成功');
     router.replace({ path: '/' });
   } catch (error) {
     console.log(error);
@@ -116,16 +117,17 @@ getCaptchaImg();
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-image: linear-gradient(to bottom, transparent, #fff 200px),
-    linear-gradient(to right, #a1c4fd 20%, #c2e9fb);
+  height: 100%;
+  // 渐变背景
+  // background-image: linear-gradient(to bottom, transparent, #fff 200px),
+  //   linear-gradient(to right, #a1c4fd 20%, #c2e9fb);
   .logo {
     margin-bottom: 30px;
     margin-top: 100px;
   }
 
   .van-field {
-    width: 360px;
+    width: 325px;
   }
 
   .bottom-register {

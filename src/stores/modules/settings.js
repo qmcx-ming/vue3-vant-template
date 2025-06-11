@@ -3,7 +3,8 @@ import { setPageTitle } from '@/utils/pageTitle';
 
 const useSettingsStore = defineStore('settings', {
   state: () => ({
-    title: ''
+    title: '',
+    theme: localStorage.getItem('theme') || 'light', // 默认主题为 light
   }),
   actions: {
     /**
@@ -13,6 +14,11 @@ const useSettingsStore = defineStore('settings', {
     setTitle(title) {
       this.title = title;
       setPageTitle();
+    },
+    toggleTheme() {
+      this.theme = this.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', this.theme);
+      document.documentElement.classList.add(this.theme);
     }
   }
 })

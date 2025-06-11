@@ -84,7 +84,7 @@ getProfile();
           <van-cell icon="notes" title="邮箱" :value="info.email" />
           <van-cell icon="gem" title="性别" :value="info.sex">
             <template #value>
-              <svg-icon :name="getSexIcon(info.sex)" size="18px" />
+              <svg-icon :name="getSexIcon(info.sex)" color="var(--icon-color)" size="18px" />
             </template>
           </van-cell>
           <van-cell icon="comment" title="个性签名" :value="info.remark" />
